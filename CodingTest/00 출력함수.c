@@ -6,14 +6,12 @@ int main(void) {
 	float sosu1 = 0.001592f;
 	//문자 띄어쓰기 포함 11개 , 배열의 길이는 11+1 (널문자) = 12 규칙.., 문자 끝엔 널문자가 꼭 들어가야함
 	char mjyeol[12] = "Hello World";
-	char a = 'a';
 	printf("정수 %d, 문자 %c, 더블 %lf, 플롯 %f\n", jungsu, munja, sosu, sosu1);
 	//printf("%s\n", mjyeol);
-	/*for (int i = 0; i <= 11; i++) {
-		a = mjyeol[i];
-		printf("%c", a);
-	}*/
-	printf("%c", mjyeol[0]); // 'H'
+	for (int i = 0; i < 12; i++) {
+		printf("%c", mjyeol[i]);
+	}
+	/*printf("%c", mjyeol[0]); // 'H'
 	printf("%c", mjyeol[1]); // 'e'
 	printf("%c", mjyeol[2]); // 'l'
 	printf("%c", mjyeol[3]); // 'l'
@@ -24,5 +22,5 @@ int main(void) {
 	printf("%c", mjyeol[8]); // 'r'
 	printf("%c", mjyeol[9]); // 'l'
 	printf("%c", mjyeol[10]); // 'd'
-	printf("%c", mjyeol[11]); // 널문자
+	printf("%c", mjyeol[11]); // 널문자*/
 }

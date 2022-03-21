@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 int main(void) {
 	int jungsu = 1;
 	char munja = 'a';
@@ -8,7 +9,7 @@ int main(void) {
 	char mjyeol[12] = "Hello World";
 	printf("정수 %d, 문자 %c, 더블 %lf, 플롯 %f\n", jungsu, munja, sosu, sosu1);
 	//printf("%s\n", mjyeol);
-	for (int i = 0; i < 12; i++) {
+	for (int i = 0; i < strlen(mjyeol); i++) {
 		printf("%c", mjyeol[i]);
 	}
 	/*printf("%c", mjyeol[0]); // 'H'

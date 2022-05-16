@@ -19,10 +19,10 @@ int main(void)
     char str[30] = "Hello";
     int length = 0; //문자열의 길이
 
-    for (int i = 0; i < 30; i++) { //sizeof(str)
-        if (str[i] != '\0') {
-            length += 1 ;
-        }
+    for (int i = 0; str[i] != '\0'; i++) { //sizeof(str) for(초기식     조건문      증감문)
+
+            length ++ ;
+        
     }
     printf("길이는 %d", length);
     return 0;

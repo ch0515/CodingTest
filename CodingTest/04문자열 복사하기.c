@@ -6,7 +6,6 @@ void my_strcpy(char* d, char* s) {
 	int length = strlen(s);
 	for (int i = 0; i < length; i++) {
 		d[i] = s[i];
-
 	}
 }
 int main(void) {	// src에 있는 문자열의 내용을 dest에 복사하세요
@@ -20,5 +19,7 @@ int main(void) {	// src에 있는 문자열의 내용을 dest에 복사하세요
 	for (int i = 0; i < length; i++) {
 		printf("%c", dest[i]);
 	}
+
+
 	return 0;
 }

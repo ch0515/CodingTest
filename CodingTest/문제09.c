@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+
 //answer 사이즈 신청 결과를 담고 있는 배열
 //[0] : "XS" 사이즈 신청자의 수
 //[1] : "S" 사이즈 신청자의수
@@ -10,8 +11,11 @@
 //[4] : "XL" 사이즈 신청자의수
 //[5] : "XXL" 사이즈 신청자의수
 int* solution(char* shirt_size[], int shirt_size_len) {
-	int arr[6] = { 0,0,0,0,0,0 };
-	int* answer = arr;
+	
+	//배열 동적할당
+	int* answer = malloc(6 * sizeof(int));
+	for (int i = 0; i < 6; i++) 
+		answer[i] = 0;
 	// shirt_size 에 있는 모든 원소를 뒤져서 counting
 	for (int i = 0; i < shirt_size_len; i++) {
 		//shirt_size[i]가 "XS"면 answer[0]++

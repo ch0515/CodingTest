@@ -3,9 +3,14 @@
 #include <stdlib.h>
 
 int* func_a(int arr[], int arr_len) {
+    // 1000까지의 숫자를 담을 수 있는 배열을 생성
     int* counter = (int*)malloc(sizeof(int) * 1001);
+
+    //각각의 갯수를 0으로 초기화
     for (int i = 0; i < 1001; i++)
         counter[i] = 0;
+
+
     for (int i = 0; i < arr_len; i++)
         counter[arr[i]]++;
     return counter;

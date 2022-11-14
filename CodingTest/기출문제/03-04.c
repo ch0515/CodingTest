@@ -4,43 +4,20 @@
 
 int solution(char* words[], int words_len, char* word) {
 	int count = 0;
-	if (word[0] != words[0][0]) {
-		count++;
-	}
-	if (word[1] != words[0][1]) {
-		count++;
-	}
-	if (word[2] != words[0][2]) {
-		count++;
-	}
-	if (word[3] != words[0][3]) {
-		count++;
-	}
 
-	if (word[0] != words[1][0]) {
-		count++;
-	}
-	if (word[1] != words[1][1]) {
-		count++;
-	}
-	if (word[2] != words[1][2]) {
-		count++;
-	}
-	if (word[3] != words[1][3]) {
-		count++;
-	}
-
-	if (word[0] != words[2][0]) {
-		count++;
-	}
-	if (word[1] != words[2][1]) {
-		count++;
-	}
-	if (word[2] != words[2][2]) {
-		count++;
-	}
-	if (word[3] != words[2][3]) {
-		count++;
+	for (int i = 0; i < words_len; i++) {
+		if (word[0] != words[i][0]) {
+			count++;
+		}
+		if (word[1] != words[i][1]) {
+			count++;
+		}
+		if (word[2] != words[i][2]) {
+			count++;
+		}
+		if (word[3] != words[i][3]) {
+			count++;
+		}
 	}
 	return count;
 }

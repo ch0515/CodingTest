@@ -6,18 +6,12 @@ int solution(char* words[], int words_len, char* word) {
 	int count = 0;
 
 	for (int i = 0; i < words_len; i++) {
-		if (word[0] != words[i][0]) {
-			count++;
+		for (int j = 0; j < strlen(word); j++) {
+			if (word[j] != words[i][j]) {
+				count++;
+			}
 		}
-		if (word[1] != words[i][1]) {
-			count++;
-		}
-		if (word[2] != words[i][2]) {
-			count++;
-		}
-		if (word[3] != words[i][3]) {
-			count++;
-		}
+		
 	}
 	return count;
 }

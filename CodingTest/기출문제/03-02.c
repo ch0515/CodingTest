@@ -2,40 +2,55 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-int compare(const void* a, const void* b) {
-    return (*(int*)b - *(int*)a);
+int func_a(int current_grade[], int last_grade[], int rank[], int arr_length, int max_diff_grade) {
+    int count = 0;
+    for (int i = 0; i < arr_length; i++) {
+        if (current_grade[i] >= 80 && rank[i] <= arr_length / 10)
+            count++;
+        else if (current_grade[i] >= 80 && rank[i] == 1)
+            count++;
+        else if (max_diff_grade == current_grade[i] - last_grade[i])
+            count++;
+    }
+    return count;
 }
 
-int func_a(int scores[], int scores_len, int score) {
-    for (int rank = 0; rank < scores_len; rank++)
-        if (scores[rank] == score)
-            return rank + 1;
-    return 0;
+int* func_b(int current_grade[], int arr_length) {
+    int* rank = (int*)malloc(sizeof(int) * arr_length);
+    for (int i = 0; i < arr_length; i++)
+        rank[i] = 1;
+    for (int i = 0; i < arr_length; i++)
+        for (int j = 0; j < arr_length; j++)
+            if (current_grade[i] < current_grade[j])
+                rank[i]++;
+    return rank;
 }
 
-void func_b(int arr[], int arr_len) {
-    qsort(arr, arr_len, sizeof(int), compare);
+int func_c(int current_grade[], int last_grade[], int arr_length) {
+    int max_diff_grade = 1;
+    for (int i = 0; i < arr_length; i++) {
+        if (max_diff_grade < current_grade[i] - last_grade[i])
+            max_diff_grade = current_grade[i] - last_grade[i];
+    }
+    return max_diff_grade;
 }
+int solution(int current_grade[], int current_grade_len, int last_grade[], int last_grade_len) {
+    int arr_length = current_grade_len;
 
-int func_c(int arr[], int n) {
-    return arr[n];
-}
-
-int solution(int scores[], int scores_len, int n) {
-    //1. n번 학생의 점수를 변수에 저장합니다.
-    int score = func_c(scores, n);
-    //2. 점수를 내림차순으로 정렬합니다
-    func_b(scores, scores_len);
-    //3. 배열의 첫번째 원소부터 마지막 원소까지 순회하며 n번 학생의 점수를 찾습니다
-    int answer = func_a(scores, scores_len, score);
-    //4. 1번 단계에서 저장해둔 점수와 같은 점수를 찾으면 등수를 return 합니다
+    // 이번학기 성적을 기준으로 학생별 석차를 구합니다
+    int* rank = func_b(current_grade, arr_length);
+    // 각 학생의(이번학기성적 - 직전학기성적) 중 최대값을 구합니다
+    int max_diff_grade = func_c(current_grade, last_grade,arr_length);
+    // 아래 조건을 만족하는 학생을 발견하면 장학생 수를 1 증가시킵니다.
+    int answer = func_a(current_grade, last_grade, rank, arr_length, max_diff_grade);
     return answer;
 }
 int main() {
-    int scores[4] = { 20, 60, 98, 59 };
-    int scores_len = 4;
-    int n = 3;
-    int ret = solution(scores, scores_len, n);
+    int current_grade[6] = { 70, 100, 70, 80, 50, 95 };
+    int current_grade_len = 6;
+    int last_grade[6] = { 35, 65, 80, 50, 20, 60 };
+    int last_grade_len = 6;
+    int ret = solution(current_grade, current_grade_len, last_grade, last_grade_len);
 
     printf("solution 함수의 반환 값은 %d 입니다.\n", ret);
 }

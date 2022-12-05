@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int solution(int calorie[], int calorie_len) {
-    int min_cal = 0;
+    int min_cal = calorie[0]; //or 1001 로 해도 돌아감
     int answer = 0;
     for (int i = 0; i < calorie_len; i++) {
         //현재값에 -최소값만큼 누적
